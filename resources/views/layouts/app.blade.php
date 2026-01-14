@@ -9,9 +9,8 @@
     @vite('resources/css/app.css')
     <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
 </head>
-<body class="h-full text-white">
+<body class="h-full text-white min-h-screen flex flex-col">
 
-<div class="min-h-full">
     {{-- NAVBAR --}}
     @include('components.navbar')
 
@@ -20,15 +19,20 @@
         @yield('header')
     @endif
 
-    {{-- MAIN CONTENT --}}
-    <main>
+    {{-- MAIN: penting flex-1 biar footer turun --}}
+    <main class="flex-1">
         @yield('content')
     </main>
-</div>
 
-{{-- SCRIPTS PER PAGE --}}
-@stack('scripts')
-@include('components.confirm-delete')
-@include('components.confirm-delete-script')
+    {{-- FOOTER --}}
+    @include('components.footer')
+
+    {{-- GLOBAL COMPONENTS --}}
+    @include('components.confirm-delete')
+    @include('components.confirm-delete-script')
+
+    {{-- SCRIPTS PER PAGE --}}
+    @stack('scripts')
+
 </body>
 </html>

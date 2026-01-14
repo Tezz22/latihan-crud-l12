@@ -1,4 +1,5 @@
 <nav class="bg-gray-800/50">
+    {{-- Desktop Menu --}}
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
             <div class="flex items-center">
@@ -10,9 +11,11 @@
                     <div class="ml-10 flex items-baseline space-x-4">
 
                         {{-- Dashboard --}}
-                        <a href="{{ url('/') }}"
-                           class="rounded-md px-3 py-2 text-sm font-medium
-                           {{ request()->is('/') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
+                        <a href="{{ route('dashboard') }}"
+                        class="rounded-md px-3 py-2 text-sm font-medium
+                        {{ request()->routeIs('dashboard')
+                                ? 'bg-gray-950/50 text-white'
+                                : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
                             Dashboard
                         </a>
 
@@ -90,13 +93,14 @@
         </div>
     </div>
 
+    <!-- Mobile menu, show/hide based on menu state. -->
     <el-disclosure id="mobile-menu" hidden class="block md:hidden">
         <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
 
             {{-- Dashboard --}}
-            <a href="{{ url('/') }}"
-               class="block rounded-md px-3 py-2 text-base font-medium
-               {{ request()->is('/') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
+            <a href="{{ route('dashboard') }}"
+            class="rounded-md px-3 py-2 text-sm font-medium
+            {{ request()->routeIs('dashboard') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
                 Dashboard
             </a>
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
@@ -9,9 +10,8 @@ use Illuminate\Support\Facades\Route;
 // Route::post('/barangs', [BarangController::class, 'store']);
 // Route::put('/barangs/{barang}', [BarangController::class, 'update']);
 // Route::delete('/barangs/{barang}', [BarangController::class, 'destroy']);
-Route::get('/', function () {
-    return redirect()->route('barangs.index');
-});
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
 Route::resource('barangs', BarangController::class)->only([
     'index', 'store', 'update', 'destroy'
 ]);
